@@ -17,4 +17,4 @@ og útkoman ætti að vera svippuð þessu.
 ID          Installed Latest Name              
 arduino:avr 1.8.6     1.8.6  Arduino AVR Boards
 ```
-### Compiling
+### Compiling og Upload
