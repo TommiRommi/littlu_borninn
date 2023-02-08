@@ -10,7 +10,7 @@ arduino-cli core install arduino:avr
 ```
 hægt er að sannræna að `avr` er set up með,
 ```sh
-arduino-cil core list
+arduino-cli core list
 ```
 og útkoman ætti að vera svippuð þessu.
 ```
