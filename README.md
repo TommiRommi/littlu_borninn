@@ -1,6 +1,6 @@
 # Littlu Börninn
 ### arduino-cli
-notaðu `arduino-cli` til að compila og uploada forritið á unoinn <a href="https://github.com/VESM1VS/AFANGI/blob/main/Kodi/simon.ino">arduino-cli</a>. 
+notaðu `arduino-cli` til að compila og uploada forritið á unoinn <a href="https://arduino.github.io/arduino-cli/0.19/">arduino-cli</a>. 
 
 Þegar að `arduino-cli` er set up þarftu setja up `avr` fyrir `arv-g++` C++ compilerinn sem er notaður til að compila forritið fyrir unoinn.
 
