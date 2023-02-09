@@ -10,15 +10,23 @@ then
 	exit
 fi
 
+# skiptir út gömul cores fyrir ný custom cores
+avr_version=$(arduino-cli core list | grep "arduino:avr" | cut -d ' ' -f 2)
+arduino_libs=~/.arduino15/packages/arduino/hardware/avr/${avr_version}/cores/arduino
+
+cp -r custom_cores/* $arduino_libs
+
 # sendir breituna af sketchinu til make til að halda breitonum eins
 SKETCH=sketch
 make SKETCH=$SKETCH 
 
-serial_port=$(arduino-cli board list | grep "arduino:avr:uno" | cut -d ' ' -f 1)
+buff=$(arduino-cli board list)
+serial_port=$(echo $buff | grep "arduino:avr:uno" | cut -d ' ' -f 1)
 
-if [ -z $serial_port ]
+if [ "$buff" = "No boards found." ]
 then
 	echo "no uno board found" >&2
+	exit 1
 elif [ "$(stat -c %u $serial_port)" = "$UID" ] || [ "$UID" = "0" ]
 then
 	echo "you do not have the permission to do that" >&2
@@ -26,5 +34,5 @@ then
 	exit 1
 fi
 
-# sendir til unoinn
+# uploadar til unoinn
 arduino-cli upload -p $serial_port --fqbn arduino:avr:uno ${SKETCH}/${SKETCH}.ino
