@@ -30,7 +30,7 @@ void initVariant() { }
 void setupUSB() __attribute__((weak));
 void setupUSB() { }
 
-void reset(void)
+void reset()
 {
 	init();
 
