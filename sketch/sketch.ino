@@ -1,5 +1,5 @@
 #ifndef ARDUINO
-#error you need to compile this with a arduino compiler
+#error þú verður að nota arduino compiler
 #else
 
 #include <Arduino.h>
