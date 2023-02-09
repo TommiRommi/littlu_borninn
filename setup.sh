@@ -10,7 +10,7 @@ then
 	exit
 fi
 
-# sendir breituna af sketchinu til make til breitonum eins
+# sendir breituna af sketchinu til make til að halda breitonum eins
 SKETCH=sketch
 make SKETCH=$SKETCH 
 
