@@ -7,11 +7,12 @@
 
 int main(void)
 {
-	  reset();
+	reset();
 
-	  for(;;){}
+	/* kóði kemur hér */
 
-	  return(0);
+	for(;;){}
+	return(0);
 }
 
 #endif
