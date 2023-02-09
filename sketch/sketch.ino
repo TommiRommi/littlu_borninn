@@ -3,8 +3,15 @@
 #else
 
 #include <Arduino.h>
+#include <stdint.h>
 
-void setup(){}
-void loop(){}
+int main(void)
+{
+	  reset();
+
+	  for(;;){}
+
+	  return(0);
+}
 
 #endif
