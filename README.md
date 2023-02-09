@@ -23,7 +23,7 @@ arduino:avr 1.8.6     1.8.6  Arduino AVR Boards
 Passaðu það að notandinn þinn hefur leif til að skrifa í serial `character special file` sem er búið til frá því að stínga unoinum í samband.
 
 Það er hægt að skoða hver hann file er með því að skrifa,
-```
+```sh
 arduino-cli board list
 ```
 ```
@@ -32,10 +32,10 @@ Port         Protocol Type              Board Name  FQBN            Core
 ------------
 ```
 maður gefur notandanum læfi með a skrifa.
-```
+```sh
 sudo chown $USER </path/to/serial/port>
 ```
 Í lokinn keyrir þú `setup.sh` til að Compila og Uploada
-```
+```sh
 chmod +x setup.sh; ./setup.sh
 ```
