@@ -37,5 +37,5 @@ sudo chown $USER </path/to/serial/port>
 ```
 Í lokinn keyrir þú `setup.sh` til að Compila og Uploada
 ```sh
-chmod +x setup.sh; ./setup.sh
+chmod +x setup.sh && ./setup.sh
 ```
