@@ -18,21 +18,24 @@ cp -r custom_cores/* $arduino_libs
 
 # sendir breituna af sketchinu til make til að halda breitonum eins
 SKETCH=sketch
-make SKETCH=$SKETCH 
+if ! make SKETCH=$SKETCH
+then
+	exit 1
+fi
 
 buff=$(arduino-cli board list)
-serial_port=$(echo $buff | grep "arduino:avr:uno" | cut -d ' ' -f 1)
+serial_port=$(echo $buff | grep "arduino:avr:uno" | cut -d ' ' -f 8)
 
 if [ "$buff" = "No boards found." ]
 then
 	echo "no uno board found" >&2
 	exit 1
-elif [ "$(stat -c %u $serial_port)" = "$UID" ] || [ "$UID" = "0" ]
+fi
+
+# uploadar til unoinn
+if ! arduino-cli upload -p $serial_port --fqbn arduino:avr:uno ${SKETCH}/${SKETCH}.ino >/dev/null
 then
 	echo "you do not have the permission to do that" >&2
 	echo "run as super user or use chown 'sudo chown $USER ${serial_port}'" >&2
 	exit 1
 fi
-
-# uploadar til unoinn
-arduino-cli upload -p $serial_port --fqbn arduino:avr:uno ${SKETCH}/${SKETCH}.ino
