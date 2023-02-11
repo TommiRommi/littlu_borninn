@@ -1,41 +1,79 @@
 #!/usr/bin/sh
 
+SKETCH=sketch
+c=0
+
+help_text()
+{
+	echo "${0##*/} <help_text|compile|clean|/path/to/serial/port> ..."
+	echo 
+	echo "help_text:"
+	echo "	prints this text"
+	echo "compile:"
+	echo "	compiles the programs and exits"
+	echo "clean:"
+	echo "	removes the output build directory"
+	echo "<path/to/serial/port>:"
+	echo "	where to upload the program"
+}
+
+compile()
+{
+	# sendir breituna af sketchinu til make til að halda breitonum eins
+	if ! make SKETCH=$SKETCH
+	then
+		exit 1
+	fi
+}
+
+compile_and_upload()
+{
+	if [ "c" = "0" ]
+	then
+		compile
+	fi
+
+	arduino-cli upload -p $1 --fqbn arduino:avr:uno ${SKETCH}/${SKETCH}.ino
+}
+
 if ! [ -f makefile ]
 then
 	echo "no makefile found" >&2
 	exit 1
-elif [ "$1" = "clean" ]
+elif [ $# != 0 ]
 then
-	make clean
-	exit
-fi
+	# skiptir út gömul cores fyrir ný custom cores
+	avr_version=$(arduino-cli core list | grep "arduino:avr" | cut -d ' ' -f 2)
+	arduino_libs=~/.arduino15/packages/arduino/hardware/avr/${avr_version}/cores/arduino
+	cp -r custom_cores/* $arduino_libs
 
-# skiptir út gömul cores fyrir ný custom cores
-avr_version=$(arduino-cli core list | grep "arduino:avr" | cut -d ' ' -f 2)
-arduino_libs=~/.arduino15/packages/arduino/hardware/avr/${avr_version}/cores/arduino
+	# loopar í gegnum öll arguments og notar shift til að aðgengast þeim á $1
+	for x in {0..$1}
+	do
+		case $1 in
+			'help')
+				help_text
+				exit;;
+			'compile')
+				compile
+				exit;;
+			'clean')
+				make clean
+				exit;;
+			*)
+				if [ -c $1 ]
+				then
+					compile_and_upload
+				else
+					help_text
+					exit 1
+				fi;;
+		esac
 
-cp -r custom_cores/* $arduino_libs
-
-# sendir breituna af sketchinu til make til að halda breitonum eins
-SKETCH=sketch
-if ! make SKETCH=$SKETCH
-then
-	exit 1
-fi
-
-buff=$(arduino-cli board list)
-serial_port=$(echo $buff | grep "arduino:avr:uno" | cut -d ' ' -f 8)
-
-if [ "$buff" = "No boards found." ]
-then
-	echo "no uno board found" >&2
-	exit 1
-fi
-
-# uploadar til unoinn
-if ! arduino-cli upload -p $serial_port --fqbn arduino:avr:uno ${SKETCH}/${SKETCH}.ino >/dev/null
-then
-	echo "you do not have the permission to do that" >&2
-	echo "run as super user or use chown 'sudo chown $USER ${serial_port}'" >&2
+		shift
+		c=$((c += 1))
+	done
+else
+	help_text
 	exit 1
 fi
