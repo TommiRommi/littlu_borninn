@@ -48,7 +48,7 @@ then
 	cp -r custom_cores/* $arduino_libs
 
 	# loopar í gegnum öll arguments og notar shift til að aðgengast þeim á $1
-	for x in {0..$1}
+	for x in {0..$#}
 	do
 		case $1 in
 			'help')
