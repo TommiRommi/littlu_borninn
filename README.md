@@ -1,4 +1,6 @@
 # Littlu Börninn
+### gott að vita
+Til þess að láta einhvað af þessu vera hægt þarf að skipta út mjög mikilvægum librarys og luna scripts.
 ### arduino-cli
 notaðu <a href="https://arduino.github.io/arduino-cli/">arduino-cli</a> til að compila og uploada forritið á unoinn.
 
@@ -35,7 +37,7 @@ maður gefur notandanum læfi með a skrifa.
 ```sh
 sudo chown $USER </path/to/serial/port>
 ```
-Í lokinn keyrir þú `setup.sh` til að Compila og Uploada
+Í lokinn keyrir þú `setup.sh` til að Compila og Uploada. (Passaðu að setup.sh er keyrt í sama directory og það er í)
 ```sh
 chmod +x setup.sh && ./setup.sh </path/to/serial/port>
 ```
