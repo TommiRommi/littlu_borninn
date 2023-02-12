@@ -42,9 +42,12 @@ then
 	exit 1
 elif [ $# != 0 ]
 then
-	# skiptir út gömul cores fyrir ný custom cores
+	# skiptir út gömul cores fyrir ný custom cores og setur up platform.txt
 	avr_version=$(arduino-cli core list | grep "arduino:avr" | cut -d ' ' -f 2)
-	arduino_libs=~/.arduino15/packages/arduino/hardware/avr/${avr_version}/cores/arduino
+	arduino_avr=~/.arduino15/packages/arduino/hardware/avr/${avr_version}
+	arduino_libs=${arduino_avr}/cores/arduino
+
+	cp -r platform.txt $arduino_avr
 	cp -r custom_cores/* $arduino_libs
 
 	# loopar í gegnum öll arguments og notar shift til að aðgengast þeim á $1
