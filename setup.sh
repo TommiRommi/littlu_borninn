@@ -28,11 +28,7 @@ compile()
 
 compile_and_upload()
 {
-	if [ "c" = "0" ]
-	then
-		compile
-	fi
-
+	compile
 	arduino-cli upload -p $1 --fqbn arduino:avr:uno ${SKETCH}/${SKETCH}.ino
 }
 
