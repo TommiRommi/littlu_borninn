@@ -66,7 +66,7 @@ then
 			*)
 				if [ -c $1 ]
 				then
-					compile_and_upload
+					compile_and_upload $1
 				else
 					help_text
 					exit 1
