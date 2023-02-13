@@ -1,7 +1,7 @@
 # Littlu Börninn
-### gott að vita
+## gott að vita
 setup.sh mun skipta út mjög mikilvægum librarys og luna scripts till þess að þetta virki.
-### arduino-cli
+## arduino-cli
 notaðu <a href="https://arduino.github.io/arduino-cli/">arduino-cli</a> til að compila og uploada forritið á unoinn.
 
 Þegar að `arduino-cli` er set up þarftu að setja up `avr` fyrir `arv-g++` C++ compilerinn sem er notaður til að compila forritið fyrir unoinn.
@@ -23,7 +23,7 @@ arduino:avr 1.8.6     1.8.6  Arduino AVR Boards
 ```sh
 arduino-cli lib install servo
 ```
-### Compiling og Uploading
+## Compiling og Uploading
 Áður en að þú compilar C++ forritið skaltu passa að <a href="https://www.gnu.org/software/make/">GNU make</a> sé til.
 
 Passaðu það að notandinn þinn hefur leif til að skrifa í serial `character special file` sem er búið til frá því að stínga unoinum í samband.
