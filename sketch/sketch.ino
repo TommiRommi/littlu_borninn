@@ -6,10 +6,10 @@
 #include <stdint.h>
 #include <pins.h>
 
-// echo = p2
-// trig = p3
-#define echo_pin p2
-#define trig_pin p3
+// echo = p2, trig = p3, led_pin = p4
+#define echo_pin 	p2
+#define trig_pin 	p3
+#define led_pin		p4
 
 
 inline void record_motion()
@@ -23,11 +23,11 @@ inline void record_motion()
 		digitalWrite(trig_pin, LOW);
 		 
 		pinMode(echo_pin, INPUT);		
-		digitalWrite(p4, LOW);
+		digitalWrite(led_pin, LOW);
 
 		if(pulseIn(echo_pin, HIGH) < 2920)
 		{
-			digitalWrite(p4, HIGH);
+			digitalWrite(led_pin, HIGH);
 			break;
 		}
 	}
@@ -41,14 +41,14 @@ int main(void)
 
 	pinMode(trig_pin, OUTPUT);
 	pinMode(echo_pin, INPUT);
-	pinMode(p4, OUTPUT);
+	pinMode(led_pin, OUTPUT);
 
 	while(true)
 	{
 		record_motion();
-		digitalWrite(p4, HIGH);
+		digitalWrite(led_pin, HIGH);
 		delay(4000);
-		digitalWrite(p4, LOW);
+		digitalWrite(led_pin, LOW);
 	}
 
 	for(;;){}
