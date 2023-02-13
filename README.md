@@ -1,6 +1,6 @@
 # Littlu Börninn
 ### gott að vita
-Til þess að láta einhvað af þessu vera hægt þarf að skipta út mjög mikilvægum librarys og luna scripts.
+setup.sh mun skipta út mjög mikilvægum librarys og luna scripts till þess að þetta virki.
 ### arduino-cli
 notaðu <a href="https://arduino.github.io/arduino-cli/">arduino-cli</a> til að compila og uploada forritið á unoinn.
 
