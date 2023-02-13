@@ -3,13 +3,21 @@
 #else
 
 #include <Arduino.h>
+#include <Servo.h>
 #include <stdint.h>
 #include <pins.h>
 
-// echo = p2, trig = p3, led_pin = p4
+/* echo = p2, trig = p3, led_pin = p4 */
 #define echo_pin 	p2
 #define trig_pin 	p3
 #define led_pin		p4
+#define servo_pin	p5
+
+/* timing */
+#define SERVO_SPEED		300
+#define SERVO_LOOP_COUNT	10
+
+Servo servo_p;
 
 
 inline void record_motion()
@@ -43,11 +51,21 @@ int main(void)
 	pinMode(echo_pin, INPUT);
 	pinMode(led_pin, OUTPUT);
 
+	servo_p.attach(servo_pin);
+
 	while(true)
 	{
 		record_motion();
 		digitalWrite(led_pin, HIGH);
-		delay(4000);
+
+		for(char x = 0; x < SERVO_LOOP_COUNT; x++)
+		{
+			servo_p.write(180);
+			delay(SERVO_SPEED);
+			servo_p.write(0);
+			delay(SERVO_SPEED);
+		}
+
 		digitalWrite(led_pin, LOW);
 	}
 
