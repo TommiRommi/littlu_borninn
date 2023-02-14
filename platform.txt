@@ -142,4 +142,4 @@ build.usb_manufacturer="Unknown"
 build.usb_flags=-DUSB_VID={build.vid} -DUSB_PID={build.pid} '-DUSB_MANUFACTURER={build.usb_manufacturer}' '-DUSB_PRODUCT={build.usb_product}'
 
 # custom flags
-build.extra_flags=-I ./lib
+build.extra_flags=-I./lib -I./src -I./sketch
