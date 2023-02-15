@@ -1,6 +1,6 @@
 # Littlu Börninn
 ## gott að vita
-setup.sh mun skipta út mjög mikilvægum librarys og luna scripts till þess að þetta virki.
+setup.sh mun skipta út mjög mikilvægum librarys og luna scripts til að þetta virki.
 ## arduino-cli
 notaðu <a href="https://arduino.github.io/arduino-cli/">arduino-cli</a> til að compila og uploada forritið á unoinn.
 
