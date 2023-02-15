@@ -58,7 +58,7 @@ int main(void)
 		record_motion();
 		digitalWrite(led_pin, HIGH);
 
-		for(char x = 0; x < SERVO_LOOP_COUNT; x++)
+		for(uint8_t x = 0; x < SERVO_LOOP_COUNT; x++)
 		{
 			servo_p.write(180);
 			delay(SERVO_SPEED);
@@ -68,9 +68,13 @@ int main(void)
 
 		digitalWrite(led_pin, LOW);
 	}
-
-	for(;;){}
-	return(0);
 }
+
+/* öryggis kóði */
+#pragma GCC optimize ("O0")
+__asm__ __volatile__ (
+	"loop:\n"
+	"jmp loop\n"
+);					
 
 #endif
