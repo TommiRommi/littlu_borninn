@@ -20,7 +20,7 @@
 Servo servo_p;
 
 
-void record_motion()
+inline void record_motion()
 {
 	while(true)
 	{
