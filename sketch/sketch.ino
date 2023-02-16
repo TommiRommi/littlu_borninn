@@ -14,8 +14,8 @@
 #define servo_pin	p5
 
 /* timing */
-#define SERVO_SPEED		300
-#define SERVO_LOOP_COUNT	10
+#define SERVO_SPEED		(uint16_t)300
+#define SERVO_LOOP_COUNT	(uint8_t)10
 
 Servo servo_p;
 
