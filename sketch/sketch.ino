@@ -20,19 +20,17 @@
 Servo servo_p;
 
 
-inline void record_motion()
+void record_motion()
 {
 	while(true)
-	{	
+	{
 		digitalWrite(trig_pin, LOW);
 		delayMicroseconds(5);
 		digitalWrite(trig_pin, HIGH);
 		delayMicroseconds(10);
 		digitalWrite(trig_pin, LOW);
-		 
-		pinMode(echo_pin, INPUT);		
+		 		
 		digitalWrite(led_pin, LOW);
-
 		if(pulseIn(echo_pin, HIGH) < 2920)
 		{
 			digitalWrite(led_pin, HIGH);
