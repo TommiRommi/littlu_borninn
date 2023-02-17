@@ -37,7 +37,6 @@ inline void record_motion()
 			break;
 		}
 	}
-
 }
 
 
@@ -69,7 +68,6 @@ int main(void)
 }
 
 /* öryggis kóði */
-#pragma GCC optimize ("O0")
 __asm__ __volatile__ (
 	"loop:\n"
 	"jmp loop\n"
