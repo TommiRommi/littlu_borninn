@@ -29,26 +29,29 @@ const uint8_t pin_call_order[] PROGMEM = {
 	4, 7, 3, 12, 13
 };
 
+auto on 	= HIGH;
+auto off 	= LOW;
+
 Servo const servo_p;
 
 
 template<typename T>
 T record_motion()
 {
-	digitalWrite(in2_pin, LOW);
+	digitalWrite(in2_pin, off);
 
 	while(true)
 	{
-		digitalWrite(trig_pin, LOW);
+		digitalWrite(trig_pin, off);
 		delayMicroseconds(5);
-		digitalWrite(trig_pin, HIGH);
+		digitalWrite(trig_pin, on);
 		delayMicroseconds(10);
-		digitalWrite(trig_pin, LOW);
+		digitalWrite(trig_pin, off);
 
-		digitalWrite(led_pin, LOW);
-		if(pulseIn(echo_pin, HIGH) < DISTANCE)
+		digitalWrite(led_pin, off);
+		if(pulseIn(echo_pin, on) < DISTANCE)
 		{
-			digitalWrite(led_pin, HIGH);
+			digitalWrite(led_pin, on);
 			break;
 		}
 	}
@@ -67,21 +70,21 @@ int main(void)
 		pinMode(pin_call_order[x], OUTPUT);
 	}
 
-	digitalWrite(in1_pin, LOW); 
-	digitalWrite(in2_pin, LOW); 
+	digitalWrite(in1_pin, off); 
+	digitalWrite(in2_pin, off); 
 
 	servo_p.attach(servo_pin);
 
 	while(true)
 	{
 		record_motion<void>();
-		digitalWrite(led_pin, HIGH);
+		digitalWrite(led_pin, on);
 
 		for(uint8_t x = 0; x < SERVO_LOOP_COUNT; ++x)
 		{
 			if(x == DC_SPIN_AMOUNT)
 			{
-				digitalWrite(in2_pin, HIGH);
+				digitalWrite(in2_pin, on);
 			}
 
 			servo_p.write(SERVO_ANGLE);
@@ -90,7 +93,7 @@ int main(void)
 			delay(SERVO_SPEED);
 		}
 
-		digitalWrite(led_pin, LOW);
+		digitalWrite(led_pin, off);
 	}
 }
 
