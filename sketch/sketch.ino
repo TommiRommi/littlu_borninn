@@ -32,7 +32,8 @@ const uint8_t pin_call_order[] PROGMEM = {
 Servo const servo_p;
 
 
-inline void record_motion()
+template<typename T>
+T record_motion()
 {
 	digitalWrite(in2_pin, LOW);
 
@@ -61,7 +62,7 @@ int main(void)
 	/* pinmodes */
 	pinMode(echo_pin, INPUT);	
 
-	for(int8_t x = 0; x < sizeof(pin_call_order); x++)
+	for(uint8_t x = 0; x < sizeof(pin_call_order); ++x)
 	{
 		pinMode(pin_call_order[x], OUTPUT);
 	}
@@ -73,10 +74,10 @@ int main(void)
 
 	while(true)
 	{
-		record_motion();
+		record_motion<void>();
 		digitalWrite(led_pin, HIGH);
 
-		for(uint8_t x = 0; x < SERVO_LOOP_COUNT; x++)
+		for(uint8_t x = 0; x < SERVO_LOOP_COUNT; ++x)
 		{
 			if(x == DC_SPIN_AMOUNT)
 			{
