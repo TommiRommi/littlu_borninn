@@ -79,7 +79,7 @@ inline void skeleton_baby::robot_move()
 	digitalWrite(in1_pin, off); 
 	digitalWrite(in2_pin, off); 
 
-	Servo::attach(servo_pin);
+	this->attach(servo_pin);
 
 	while(true)
 	{
@@ -93,9 +93,9 @@ inline void skeleton_baby::robot_move()
 				digitalWrite(in2_pin, on);
 			}
 
-			Servo::write(SERVO_ANGLE);
+			this->write(SERVO_ANGLE);
 			delay(SERVO_SPEED);
-			Servo::write(0);
+			this->write(0);
 			delay(SERVO_SPEED);
 		}
 
