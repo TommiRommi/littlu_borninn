@@ -7,6 +7,8 @@
 #include <stdint.h>
 #include <stdbool.h>
 #include <pins.h>
+// #include <DFRobotDFPlayerMini.h>
+// #include <SoftwareSerial.h>
 
 /* pins */
 #define echo_pin 	p2
@@ -32,11 +34,17 @@ const uint8_t pin_call_order[] PROGMEM = {
 auto on 	= HIGH;
 auto off 	= LOW;
 
-Servo const servo_p;
+
+class skeleton_baby : public Servo 
+{
+private:	
+	void record_motion();
+public:
+	inline void robot_move();	
+};
 
 
-template<typename T>
-T record_motion()
+void skeleton_baby::record_motion()
 {
 	digitalWrite(in2_pin, off);
 
@@ -58,10 +66,8 @@ T record_motion()
 }
 
 
-int main(void)
+inline void skeleton_baby::robot_move()
 {
-	reset();
-
 	/* pinmodes */
 	pinMode(echo_pin, INPUT);	
 
@@ -73,11 +79,11 @@ int main(void)
 	digitalWrite(in1_pin, off); 
 	digitalWrite(in2_pin, off); 
 
-	servo_p.attach(servo_pin);
+	Servo::attach(servo_pin);
 
 	while(true)
 	{
-		record_motion<void>();
+		record_motion();
 		digitalWrite(led_pin, on);
 
 		for(uint8_t x = 0; x < SERVO_LOOP_COUNT; ++x)
@@ -87,14 +93,25 @@ int main(void)
 				digitalWrite(in2_pin, on);
 			}
 
-			servo_p.write(SERVO_ANGLE);
+			Servo::write(SERVO_ANGLE);
 			delay(SERVO_SPEED);
-			servo_p.write(0);
+			Servo::write(0);
 			delay(SERVO_SPEED);
 		}
 
 		digitalWrite(led_pin, off);
 	}
+
+}
+
+
+int main(void)
+{
+	reset();
+
+	skeleton_baby baby;
+
+	baby.robot_move();
 }
 
 /* öryggis kóði */
