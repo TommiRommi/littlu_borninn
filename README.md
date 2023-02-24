@@ -23,7 +23,6 @@ arduino:avr 1.8.6     1.8.6  Arduino AVR Boards
 ```sh
 arduino-cli lib install servo
 arduino-cli lib install DFRobotDFPlayerMini
-arduino-cli lib install SoftwareSerialTX
 ```
 ## Compiling og Uploading
 Áður en að þú compilar C++ forritið skaltu passa að <a href="https://www.gnu.org/software/make/">GNU make</a> sé til.
