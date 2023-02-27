@@ -53,7 +53,7 @@ chmod +x setup.sh && ./setup.sh </path/to/serial/port>
 ```c++
 #ifndef ARDUINO
 #error þú verður að nota arduino compiler
-#else
+#endif
 
 #include <Arduino.h>
 #include <Servo.h>
@@ -68,7 +68,7 @@ chmod +x setup.sh && ./setup.sh </path/to/serial/port>
 #define ena_pin 	p3
 #define trig_pin 	p4
 #define led_pin	p7
-#define servo_pin	p8
+#define servo_pin	p9
 #define in1_pin	p12
 #define in2_pin	p13
 
@@ -83,7 +83,7 @@ chmod +x setup.sh && ./setup.sh </path/to/serial/port>
 #define DISTANCE	2000
 
 const uint8_t pin_call_order[] PROGMEM = {
-	4, 7, 3, 12, 13
+	4, 7, 3, 12, 13, 9
 };
 
 auto on 	= HIGH;
@@ -91,17 +91,10 @@ auto off 	= LOW;
 
 
 SoftwareSerial mySoftwareSerial(10, 11);
+Servo servo_p;
+DFRobotDFPlayerMini dfrm;
 
-class skeleton_baby : public Servo, public DFRobotDFPlayerMini
-{
-private:
-	void record_motion();
-public:
-	inline void robot_move();	
-};
-
-
-void skeleton_baby::record_motion()
+inline void record_motion()
 {
 	digitalWrite(in2_pin, off);
 
@@ -125,7 +118,7 @@ void skeleton_baby::record_motion()
 }
 
 
-inline void skeleton_baby::robot_move()
+inline void robot_move()
 {
 	mySoftwareSerial.begin(9600);
 
@@ -140,18 +133,18 @@ inline void skeleton_baby::robot_move()
 	digitalWrite(in1_pin, off); 
 	digitalWrite(in2_pin, off); 
 
-	Servo::attach(servo_pin);
+	servo_p.attach(servo_pin);
 
-	while(!DFRobotDFPlayerMini::begin(mySoftwareSerial))
+	while(!dfrm.begin(mySoftwareSerial))
 
-	DFRobotDFPlayerMini::volume(10);
-	DFRobotDFPlayerMini::loop(1);
+	dfrm.volume(10);
+	dfrm.loop(1);
 
 	while(true)
 	{
-		DFRobotDFPlayerMini::pause();
+		dfrm.pause();
 		record_motion();
-		DFRobotDFPlayerMini::start();
+		dfrm.start();
 		digitalWrite(led_pin, on);
 
 		for(uint8_t x = 0; x < SERVO_LOOP_COUNT; ++x)
@@ -161,9 +154,9 @@ inline void skeleton_baby::robot_move()
 				digitalWrite(in2_pin, on);
 			}
 
-			Servo::write(0);
+			servo_p.write(SERVO_ANGLE);
 			delay(SERVO_SPEED);
-			Servo::write(SERVO_ANGLE);
+			servo_p.write(0);
 			delay(SERVO_SPEED);
 		}
 
@@ -176,10 +169,7 @@ inline void skeleton_baby::robot_move()
 int main(void)
 {
 	reset();
-
-	skeleton_baby baby;
-
-	baby.robot_move();
+	robot_move();
 }
 
 /* öryggis kóði */
@@ -187,8 +177,6 @@ __asm__ __volatile__ (
 	"loop:\n"
 	"jmp loop\n"
 );					
-
-#endif
 ```
 </details>
 
