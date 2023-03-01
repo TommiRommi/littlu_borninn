@@ -9,7 +9,7 @@ Arduino Uno Rev3 er microcontroller framleidd af Ardunio sem notfærir sér [ATm
 
 notað er 512 bytes af [IPL](https://n64brew.dev/wiki/Initial_Program_Load) kóða sem er stilt með lockbit. Ekkert heap minni er notað, heldur er allt addressing gert með stack addressing. allur kóði sem getur verið inline er inline til að minka stack addressingið. MCU er stillt á til að verja allt flashið.
 
-Ef einhvað fer fyrir framan sensorinn hjá lofthænu mun movement sequence byrja þar sem hún beygir sig niður og reinir að éta mann
+Ef einhvað fer fyrir framan sensorinn hjá lofthænu mun movement sequence hennar byrja þar sem hún beygir sig niður og reinir að éta mann. Annars er hún idle og bíður þolimóð eftir skipun frá sensorinum.
 ### Heimildir
 - [avr-g++](http://ccrma.stanford.edu/planetccrma/man/man1/avr-g++.1.html)
 - [avr-gcc](https://gcc.gnu.org/wiki/avr-gcc)
