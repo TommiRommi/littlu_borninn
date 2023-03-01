@@ -2,7 +2,21 @@
 ## gott að vita
 setup.sh mun skipta út mjög mikilvægum librarys og lua scripts til að þetta virki.
 ## Skýrsla
-thing
+### Heimildir
+- [avr-g++](http://ccrma.stanford.edu/planetccrma/man/man1/avr-g++.1.html)
+- [avr-gcc](https://gcc.gnu.org/wiki/avr-gcc)
+- [avr-objcopy](http://ccrma.stanford.edu/planetccrma/man/man1/avr-objcopy.1.html)
+- [avr-size](http://ccrma.stanford.edu/planetccrma/man/man1/avr-size.1.html)
+- [Arduino AVR Boards](https://github.com/arduino/ArduinoCore-avr)
+- [Servo Library for Arduino](https://github.com/arduino-libraries/Servo)
+- [DFPlayer - A Mini MP3 Player For Arduino](https://github.com/DFRobot/DFRobotDFPlayerMini)
+- [ardunio-cli](https://arduino.github.io/arduino-cli/0.31/)
+- [GNU Make](https://www.gnu.org/software/make/)
+- [ATmega328P](https://ww1.microchip.com/downloads/en/DeviceDoc/Atmel-7810-Automotive-Microcontrollers-ATmega328P_Datasheet.pdf)
+- [Using the SG90 Servo Motor With an Arduino](https://www.electronics-lab.com/project/using-sg90-servo-motor-arduino/)
+- [Arduino - DC Motor](https://arduinogetstarted.com/tutorials/arduino-dc-motor)
+- [DFPlayer - A Mini MP3 Player](https://www.dfrobot.com/product-1121.html)
+- [SKU:DFR0299](https://wiki.dfrobot.com/DFPlayer_Mini_SKU_DFR0299)
 ## arduino-cli
 notaðu <a href="https://arduino.github.io/arduino-cli/">arduino-cli</a> til að compila og uploada forritið á unoinn.
 
