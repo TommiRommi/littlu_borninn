@@ -1,5 +1,11 @@
 #!/usr/bin/sh
 
+if [ "$USER" = "root" ]
+then
+	echo "bannað að keyra þetta sem root" >&2
+	exit 1
+fi
+
 SKETCH=sketch
 c=0
 
