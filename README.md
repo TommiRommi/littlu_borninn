@@ -2,11 +2,20 @@
 ## gott að vita
 setup.sh mun skipta út mjög mikilvægum librarys og lua scripts til að þetta virki.
 ## Skýrsla
+### Lýsing
+heili lofthæna Svarthöfðadóttur er Arduino Uno Rev3.
+
+Arduino Uno Rev3 er microcontroller framleidd af Ardunio sem notfærir sér [ATmega328P](https://en.wikipedia.org/wiki/ATmega328) AVR örgjörvan.
+
+notað er 512 bytes af [IPL](https://n64brew.dev/wiki/Initial_Program_Load) kóða sem er stilt með lockbit. Ekkert heap minni er notað, heldur er allt addressing gert með stack addressing. allur kóði sem getur verið inline er inline til að minka stack addressingið. MCU er stillt á til að verja allt flashið.
+
+Ef einhvað fer fyrir framan sensorinn hjá lofthænu mun movement sequence byrja þar sem hún beygir sig niður og reinir að éta mann
 ### Heimildir
 - [avr-g++](http://ccrma.stanford.edu/planetccrma/man/man1/avr-g++.1.html)
 - [avr-gcc](https://gcc.gnu.org/wiki/avr-gcc)
 - [avr-objcopy](http://ccrma.stanford.edu/planetccrma/man/man1/avr-objcopy.1.html)
 - [avr-size](http://ccrma.stanford.edu/planetccrma/man/man1/avr-size.1.html)
+- [AVRDUDE - AVR Downloader/UploaDEr](https://www.nongnu.org/avrdude/)
 - [Arduino AVR Boards](https://github.com/arduino/ArduinoCore-avr)
 - [Servo Library for Arduino](https://github.com/arduino-libraries/Servo)
 - [DFPlayer - A Mini MP3 Player For Arduino](https://github.com/DFRobot/DFRobotDFPlayerMini)
