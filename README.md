@@ -31,6 +31,7 @@ Ef einhvað fer fyrir framan sensorinn hjá lofthænu mun movement sequence henn
 Tómas:		Forriun, githubið og rökfræði hönnun Lofthænu Svarhöfðardóttir
 Jón: 		/* stuff */
 Hjörtur:	/* stuff */
+```
 ## arduino-cli
 notaðu <a href="https://arduino.github.io/arduino-cli/">arduino-cli</a> til að compila og uploada forritið á unoinn.
 
