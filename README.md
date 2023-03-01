@@ -219,3 +219,9 @@ __asm__ __volatile__ (
 <img src="/media/image/16762883952842121450982368944318.jpg" alt="mynd_3" width="300" height="400">
 <img src="/media/image/16762884064637789580737797868149.jpg" alt="mynd_4" width="300" height="400">
 <img src="/media/image/16762979306115285682871802955081.jpg" alt="mynd_5" width="300" height="400">
+<img src="/media/image/20230220_112330.jpg" alt="mynd_4" width="300" height="400">
+<img src="/media/image/20230220_112336.jpg" alt="mynd_5" width="300" height="400">
+<img src="/media/image/20230222_164526.jpg" alt="mynd_4" width="300" height="400">
+<img src="/media/image/20230222_164540.jpg" alt="mynd_5" width="400" height="300">
+<img src="/media/image/20230222_164549.jpg" alt="mynd_4" width="300" height="400">
+<img src="/media/image/20230222_164601.jpg" alt="mynd_5" width="400" height="300">
