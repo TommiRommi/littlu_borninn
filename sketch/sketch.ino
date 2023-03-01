@@ -30,7 +30,7 @@
 #define DISTANCE	2000
 
 const uint8_t pin_call_order[] PROGMEM = {
-	4, 7, 3, 12, 13, 9
+	ena_pin, trig_pin, led_pin, servo_pin, in1_pin, in2_pin
 };
 
 auto on 	= HIGH;
