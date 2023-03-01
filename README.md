@@ -2,6 +2,8 @@
 ## gott að vita
 setup.sh mun skipta út mjög mikilvægum librarys og lua scripts til að þetta virki.
 ## Skýrsla
+### Lore
+lofthæna er fórnarlamb Hjartar sem gleymdist í skottinu hans og var fundinn pressuð niður með bílnum
 ### Lýsing
 heili lofthæna Svarthöfðadóttur er Arduino Uno Rev3.
 
