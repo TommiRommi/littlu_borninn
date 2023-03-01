@@ -26,6 +26,11 @@ Ef einhvað fer fyrir framan sensorinn hjá lofthænu mun movement sequence henn
 - [Arduino - DC Motor](https://arduinogetstarted.com/tutorials/arduino-dc-motor)
 - [DFPlayer - A Mini MP3 Player](https://www.dfrobot.com/product-1121.html)
 - [SKU:DFR0299](https://wiki.dfrobot.com/DFPlayer_Mini_SKU_DFR0299)
+### höfundar
+```
+Tómas:		Forriun, githubið og rökfræði hönnun Lofthænu Svarhöfðardóttir
+Jón: 		/* stuff */
+Hjörtur:	/* stuff */
 ## arduino-cli
 notaðu <a href="https://arduino.github.io/arduino-cli/">arduino-cli</a> til að compila og uploada forritið á unoinn.
 
